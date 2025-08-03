@@ -169,6 +169,11 @@ vim.o.confirm = true
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- CUSTOM KEYMAPS
+
+-- Switch header/source
+vim.keymap.set('n', 'gh', '<cmd>ClangdSwitchSourceHeader<CR>', { desc = 'Switch between source/header' })
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
