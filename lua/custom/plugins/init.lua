@@ -11,7 +11,8 @@ return {
   {
     'ludovicchabant/vim-gutentags',
     config = function()
-      vim.g.gutentags_project_root = { '.git' }
+      vim.g.gutentags_file_list_command = 'rg --files'
+      vim.g.gutentags_project_root = { '.git', '.root' }
       vim.g.gutentags_generate_on_new = true
       vim.g.gutentags_generate_on_missing = true
       vim.g.gutentags_generate_on_write = true

@@ -587,6 +587,10 @@ require('lazy').setup({
           --  the definition of its *type*, not where it was *defined*.
           map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
+          -- Replaces clangd's tag navigation with Ctags
+          vim.schedule(function()
+            vim.bo[event.buf].tagfunc = nil
+          end)
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
           ---@param method vim.lsp.protocol.Method
@@ -925,7 +929,13 @@ require('lazy').setup({
       --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
+      require('mini.ai').setup {
+        n_lines = 500,
+        mappings = {
+          goto_right = '', -- disables g]
+          goto_left = '', -- disables g[ (optional)
+        },
+      }
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
@@ -1025,6 +1035,13 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+
+  -- Disables clangd's tag to enable Ctags
+  vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+      vim.bo[args.buf].tagfunc = nil
+    end,
+  }),
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
