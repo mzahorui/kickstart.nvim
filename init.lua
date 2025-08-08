@@ -832,6 +832,7 @@ require('lazy').setup({
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
     opts = {
+
       keymap = {
         ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
         ['<C-e>'] = { 'hide', 'fallback' },
@@ -879,6 +880,9 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
+        menu = {
+          auto_show = false, -- Add this line
+        },
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
       },
 
