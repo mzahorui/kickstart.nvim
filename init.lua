@@ -833,6 +833,16 @@ require('lazy').setup({
     --- @type blink.cmp.Config
     opts = {
       keymap = {
+        ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-e>'] = { 'hide', 'fallback' },
+        ['<C-n>'] = { 'select_next', 'fallback' },
+        ['<C-p>'] = { 'select_prev', 'fallback' },
+        ['<C-y>'] = { 'accept', 'fallback' },
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<C-f>'] = { 'snippet_forward', 'fallback' },
+        ['<C-b>'] = { 'snippet_backward', 'fallback' },
+        ['<Tab>'] = { 'fallback' },
+        ['<S-Tab>'] = { 'fallback' },
         -- 'default' (recommended) for mappings similar to built-in completions
         --   <c-y> to accept ([y]es) the completion.
         --    This will auto-import if your LSP supports it.
@@ -854,7 +864,7 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        -- preset = 'default',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
