@@ -152,6 +152,7 @@ vim.o.splitbelow = true
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+vim.opt.autowrite = true
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
 
@@ -172,7 +173,7 @@ vim.o.confirm = true
 -- CUSTOM KEYMAPS
 
 -- Switch header/source
-vim.keymap.set('n', 'gh', '<cmd>ClangdSwitchSourceHeader<CR>', { desc = 'Switch between source/header' })
+vim.keymap.set('n', 'gh', '<cmd>LspClangdSwitchSourceHeader<CR>', { desc = 'Switch between source/header' })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -200,10 +201,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -922,6 +923,10 @@ require('lazy').setup({
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
+
+        on_colors = function(colors)
+          colors.bg = '#000000'
+        end,
       }
 
       -- Load the colorscheme here.
