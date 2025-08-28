@@ -172,6 +172,10 @@ vim.o.confirm = true
 
 -- CUSTOM KEYMAPS
 
+-- For init.lua (Neovim)
+vim.keymap.set('n', '<leader>o', 'o<Esc>k', { desc = 'Add line below' })
+vim.keymap.set('n', '<leader>O', 'O<Esc>j', { desc = 'Add line above' })
+
 -- Switch header/source
 vim.keymap.set('n', 'gh', '<cmd>LspClangdSwitchSourceHeader<CR>', { desc = 'Switch between source/header' })
 
