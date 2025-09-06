@@ -7,7 +7,7 @@ vim.g.user42 = 'mzahorui'
 vim.g.mail42 = 'mzahorui@student.42.fr'
 
 return {
-  -- GUTENTAG for ctags automation
+  --   -- GUTENTAG for ctags automation
   {
     'ludovicchabant/vim-gutentags',
     config = function()
@@ -22,11 +22,5 @@ return {
       -- Optional: specify where the cache should go
       vim.g.gutentags_cache_dir = vim.fn.expand '~/.cache/nvim/tags'
     end,
-  },
-  -- MULTICURSOR
-  {
-    'mg979/vim-visual-multi',
-    branch = 'master',
-    -- You can add config here if needed, or just keep it simple
   },
 }
