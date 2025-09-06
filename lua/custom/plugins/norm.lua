@@ -15,28 +15,38 @@ return {
     end,
   },
   -- {
-  --   'MoulatiMehdi/42norm.nvim',
+  --   'hardyrafael17/norminette42.nvim',
   --   config = function()
-  --     local norm = require '42norm'
-  --
-  --     norm.setup {
-  --       header_on_save = false,
-  --       format_on_save = false,
-  --       liner_on_change = false,
+  --     local norminette = require 'norminette'
+  --     norminette.setup {
+  --       runOnSave = true, -- Check for errors after save
+  --       maxErrorsToShow = 5, -- Limit number of errors shown
+  --       active = true, -- Enable/disable plugin
   --     }
-  --
-  --     -- Press "F5" key to run the norminette
-  --     vim.keymap.set('n', '<F5>', function()
-  --       norm.check_norms()
-  --     end, { desc = 'Update 42norms diagnostics', noremap = true, silent = true })
-  --
-  --     vim.keymap.set('n', '<C-f>', function()
-  --       norm.format()
-  --     end, { desc = 'Format buffer on 42norms', noremap = true, silent = true })
-  --
-  --     vim.keymap.set('n', '<F1>', function()
-  --       norm.stdheader()
-  --     end, { desc = 'Insert 42header', noremap = true, silent = true })
   --   end,
   -- },
+  {
+    'stevearc/conform.nvim',
+    config = function()
+      require('conform').setup {
+        formatters_by_ft = {
+          c = { 'c_formatter_42_pipx' },
+          h = { 'c_formatter_42_pipx' },
+        },
+        formatters = {
+          c_formatter_42_pipx = {
+            -- Use the pipx virtual environment python
+            command = '/home/masiyuan/.local/share/pipx/venvs/c-formatter-42/bin/python3',
+            args = { '-m', 'c_formatter_42' },
+            stdin = true,
+          },
+        },
+      }
+
+      -- Add keybinding
+      vim.keymap.set('n', '<leader>f', function()
+        require('conform').format { async = true, lsp_fallback = false }
+      end, { desc = 'Format with c_formatter_42' })
+    end,
+  },
 }

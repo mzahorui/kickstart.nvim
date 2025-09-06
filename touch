@@ -1,0 +1,7 @@
+Package: neovim
+Pin: release o=LP-PPA-neovim-ppa
+Pin-Priority: 700
+
+Package: neovim-runtime
+Pin: release o=LP-PPA-neovim-ppa
+Pin-Priority: 700
