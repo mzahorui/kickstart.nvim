@@ -709,8 +709,12 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
+        ts_ls = {},
+        html = {},
+	cssls = {},
+	emmet_ls = {
+		filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" }
+	},
 
         lua_ls = {
           -- cmd = { ... },
@@ -744,6 +748,8 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+	'prettier', -- for HTML/CSS/JS formatting
+	'eslint_d', -- for JavaScript linting
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
